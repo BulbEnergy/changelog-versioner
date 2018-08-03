@@ -1,0 +1,19 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.yarn-integrity
+lib-cov
+coverage
+.nyc_output
+.lock-wscript
+dist/
+.DS_Store/
+.DS_Store
+node_modules/
+typings/
+.npm
+.node_repl_history
+.env
