@@ -1,6 +1,6 @@
 {
   "name": "changelog-versioner",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "changelog versioning tool",
   "main": "build/index.js",
   "license": "MIT",

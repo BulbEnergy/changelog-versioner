@@ -11,7 +11,9 @@ const asyncReadFile = promisify(readFile);
 const asyncWriteFile = promisify(writeFile);
 
 const parser = unified().use(remarkParse);
-const writer = unified().use(remarkStringify);
+const writer = unified().use(remarkStringify, {
+  listItemIndent: "1"
+});
 
 const headingChangeNode = (heading: string, level: number) =>
   (({
@@ -38,13 +40,6 @@ const headingChangeNode = (heading: string, level: number) =>
     ]
   } as any) as Node);
 
-const createListItem = (children: Node) => ({
-  type: "listItem",
-  loose: false,
-  checked: null,
-  children: [children]
-});
-
 export const outputAggregatedChangelogs = async (
   changes: Array<{ filename: string; changeNodes: Node[] }>,
   outputPath: string,
@@ -58,13 +53,7 @@ export const outputAggregatedChangelogs = async (
       1,
       0,
       headingChangeNode(change.filename, 3),
-      {
-        type: "list",
-        ordered: false,
-        start: null,
-        loose: false,
-        children: change.changeNodes.map(createListItem)
-      } as any
+      ...change.changeNodes
     );
   }
 

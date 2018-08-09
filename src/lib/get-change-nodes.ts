@@ -36,9 +36,7 @@ export const getChangeNodes = (changelogMarkdownAst: Root) => {
     }
 
     if (node.type === "list") {
-      for (const listItemNode of node.children) {
-        changeNodes.push(...listItemNode.children);
-      }
+      changeNodes.push(node);
     }
   }
 

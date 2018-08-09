@@ -3,6 +3,7 @@
 ## vNext
 
 - [major] deprecated `green` which has been replaced by `primary`
+  - nested change
 - other change
 - [patch] remove unintended left margin on narrow viewports
 
