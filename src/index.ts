@@ -42,6 +42,8 @@ const runChangelogs = async (options: RunChangeLogsOptions) => {
     options.outputPath,
     nextVersion
   );
+
+  process.stdout.write(`${nextVersion}`);
 };
 
 runChangelogs(options);
