@@ -2,9 +2,24 @@
   "name": "changelog-versioner",
   "version": "0.0.0",
   "description": "changelog versioning tool",
-  "main": "index.js",
+  "main": "build/index.js",
   "license": "MIT",
+  "bin": {
+    "changelog-versioner": "bin/index.js"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
   "dependencies": {
-    "typescript": "^3.0.1"
+    "@types/glob": "^5.0.35",
+    "@types/node": "^10.5.5",
+    "glob": "^7.1.2",
+    "remark-parse": "^5.0.0",
+    "remark-stringify": "^5.0.0",
+    "typescript": "^3.0.1",
+    "unified": "^7.0.0"
+  },
+  "devDependencies": {
+    "ts-node": "^7.0.0"
   }
 }

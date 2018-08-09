@@ -2,7 +2,9 @@
 
 Tool for versioning and aggregating changelogs in a repository.
 
-`changelog-versioner --find-changelogs-in ./patterns --aggregated-output ./CHANGELOG.md`
+`changelog-versioner --find-changelogs-in [glob] --aggregated-output ./CHANGELOG.md --version-before-updating 0.1.0`
+
+* this uses [minimatch](https://github.com/isaacs/node-glob) for matching
 
 ## Arguments (all required)
 
@@ -18,6 +20,15 @@ example
 
 /** filepath to save aggregated changelog in */
 `--aggregated-output string`
+
+### version before updating
+
+ `--version-before-updating 0.1.0`
+
+
+### don't update
+
+ `--no-update`
 
 ## Example
 
@@ -65,7 +76,7 @@ example
 ```
 
 ```bash
-changelog-version-and-aggregation --find-changelogs-in ./patterns --aggregated-output ./CHANGELOG.md
+changelog-version-and-aggregation --find-changelogs-in ./patterns --aggregated-output ./CHANGELOG.md --version-before-updating 10.1.1
 ```
 
 ### After
