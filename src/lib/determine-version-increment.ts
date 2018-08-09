@@ -29,10 +29,17 @@ type SemverLevel = /** Bug */ 0 | /** Minor */ 1 | /** Major */ 2;
 ]
 */
 
-const determineVersionFromChanges = (...changeNodes: Node[]): SemverLevel => {
+const determineVersionFromChanges = (
+  ...listChangeNodes: Node[]
+): SemverLevel => {
+  const changeNodes = listChangeNodes.map(
+    listChangeNode => (listChangeNode as any).children[0].children
+  );
+  const paragraphChangeNodes = changeNodes.map(changeNode => changeNode[0]);
+
   let semverLevel: SemverLevel = 0;
 
-  for (const changeNode of changeNodes) {
+  for (const changeNode of paragraphChangeNodes) {
     if (changeNode.type !== "paragraph") {
       continue;
     }

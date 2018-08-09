@@ -43,7 +43,7 @@ const runChangelogs = async (options: RunChangeLogsOptions) => {
     nextVersion
   );
 
-  process.stdout.write(`${nextVersion}`);
+  console.log(`${nextVersion}`);
 };
 
 runChangelogs(options);
