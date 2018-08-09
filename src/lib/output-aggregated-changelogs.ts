@@ -12,7 +12,8 @@ const asyncWriteFile = promisify(writeFile);
 
 const parser = unified().use(remarkParse);
 const writer = unified().use(remarkStringify, {
-  listItemIndent: "1"
+  listItemIndent: "1",
+  bullet: "*"
 });
 
 const headingChangeNode = (heading: string, level: number) =>
