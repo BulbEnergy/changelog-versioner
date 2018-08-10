@@ -1,0 +1,26 @@
+{
+  "name": "changelog-versioner",
+  "version": "0.3.2",
+  "description": "changelog versioning tool",
+  "main": "build/index.js",
+  "license": "MIT",
+  "bin": {
+    "changelog-versioner": "bin/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "update-changelog": "yarn ts-node --files src/index.ts --find-changelogs-in './src/**/CHANGELOG.md' --aggregated-output ./CHANGELOG.md --version-before-updating $npm_package_version"
+  },
+  "dependencies": {
+    "@types/glob": "^5.0.35",
+    "@types/node": "^10.5.5",
+    "glob": "^7.1.2",
+    "remark-parse": "^5.0.0",
+    "remark-stringify": "^5.0.0",
+    "typescript": "^3.0.1",
+    "unified": "^7.0.0"
+  },
+  "devDependencies": {
+    "ts-node": "^7.0.0"
+  }
+}
