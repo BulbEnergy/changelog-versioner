@@ -14,7 +14,11 @@ const semverStringToLevel = (semverString: string): SemverLevel => {
   }
 };
 
-type SemverLevel = /** Bug */ 0 | /** Minor */ 1 | /** Major */ 2;
+type SemverLevel /** No Change */ =
+  | -1
+  | /** Bug */ 0
+  | /** Minor */ 1
+  | /** Major */ 2;
 
 /* expected changeNode structure
 [
@@ -37,7 +41,7 @@ const determineVersionFromChanges = (
   );
   const paragraphChangeNodes = changeNodes.map(changeNode => changeNode[0]);
 
-  let semverLevel: SemverLevel = 0;
+  let semverLevel: SemverLevel = -1;
 
   for (const changeNode of paragraphChangeNodes) {
     if (changeNode.type !== "paragraph") {
@@ -61,7 +65,7 @@ export const determineNextVersion = (options: {
   changelogs: { filename: string; markdownAst: Root }[];
   versionBeforeUpdating: string;
 }) => {
-  let semverLevel: SemverLevel | -1 = -1;
+  let semverLevel: SemverLevel = -1;
 
   for (const changelog of options.changelogs) {
     const fileChangeNodes = getChangeNodes(changelog.markdownAst);

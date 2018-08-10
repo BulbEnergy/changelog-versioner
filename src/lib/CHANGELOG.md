@@ -1,8 +1,8 @@
 # CHANGELOG
 
-## 0.3.2
+## vNext
 
-### ./src/lib/CHANGELOG.md
+## 0.3.2
 
 * [fix] increment minor on no changes detected
   * previous behaviour incorrectly incremented patch
