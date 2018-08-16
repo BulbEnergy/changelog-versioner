@@ -33,6 +33,8 @@ export const getChangeNodes = (changelogMarkdownAst: Root) => {
       }
 
       insideVnext = true;
+
+      continue
     }
 
     if (node.type === "list") {
