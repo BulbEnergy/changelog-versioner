@@ -36,26 +36,34 @@ type SemverLevel /** No Change */ =
 const determineVersionFromChanges = (
   ...listChangeNodes: Node[]
 ): SemverLevel => {
-  const changeNodes = listChangeNodes.map(
-    listChangeNode => (listChangeNode as any).children[0].children
-  );
-  const paragraphChangeNodes = changeNodes.map(changeNode => changeNode[0]);
-
   let semverLevel: SemverLevel = -1;
 
-  for (const changeNode of paragraphChangeNodes) {
-    if (changeNode.type !== "paragraph") {
+  for (const changeNode of listChangeNodes) {
+    if (changeNode.type !== "list") {
       continue;
     }
 
-    const linkReference = changeNode.children[0];
-    if (linkReference.type !== "linkReference") {
-      continue;
+    for (const listItemNode of changeNode.children) {
+      if (listItemNode.type !== "listItem") {
+        continue;
+      }
+
+      const paragraphNode = listItemNode.children[0];
+
+      if (paragraphNode.type !== "paragraph") {
+        continue;
+      }
+
+      const linkReferenceNode = paragraphNode.children[0];
+
+      if (linkReferenceNode.type !== "linkReference") {
+        continue;
+      }
+
+      const changeLevel = semverStringToLevel(linkReferenceNode.identifier);
+
+      semverLevel = changeLevel > semverLevel ? changeLevel : semverLevel;
     }
-
-    const changeLevel = semverStringToLevel(linkReference.identifier);
-
-    semverLevel = changeLevel > semverLevel ? changeLevel : semverLevel;
   }
 
   return semverLevel;

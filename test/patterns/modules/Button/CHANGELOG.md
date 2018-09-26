@@ -2,10 +2,10 @@
 
 ## vNext
 
+- [patch] remove unintended left margin on narrow viewports
 - [major] deprecated `green` which has been replaced by `primary`
   - nested change
 - other change
-- [patch] remove unintended left margin on narrow viewports
 
 ## 10.1.1
 
