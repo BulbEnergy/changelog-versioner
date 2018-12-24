@@ -14,8 +14,9 @@ const semverStringToLevel = (semverString: string): SemverLevel => {
   }
 };
 
-type SemverLevel /** No Change */ =
-  | -1
+type SemverLevel =
+  // prettier-ignore
+  /** No Change */ -1
   | /** Bug */ 0
   | /** Minor */ 1
   | /** Major */ 2;
@@ -99,8 +100,5 @@ export const determineNextVersion = (options: {
     return `${major}.${minor}.${patch + 1}`;
   }
 
-  // no change indicator detected
-  // we make a best guess and assume it's a non breaking feature change
-  // TODO document this behaviour
-  return `${major}.${minor + 1}.0`;
+  return options.versionBeforeUpdating;
 };

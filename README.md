@@ -4,31 +4,51 @@ Tool for versioning and aggregating changelogs in a repository.
 
 `changelog-versioner --find-changelogs-in [glob] --aggregated-output ./CHANGELOG.md --version-before-updating 0.1.0`
 
-* this uses [minimatch](https://github.com/isaacs/node-glob) for matching
+- this uses [minimatch](https://github.com/isaacs/node-glob) for matching
 
 ## Arguments (all required)
 
 ### Where to look for changelogs
 
-/** list of folders to search for changelogs in */
 `--find-changelogs-in string[]`
 
+where `string[]` is a list of folders to search for changelogs in
+
 example
+
 `--find-changelogs-in src, scripts`
 
-### where to output aggregated changelogs
+### Where to output aggregated changelogs
 
-/** filepath to save aggregated changelog in */
 `--aggregated-output string`
 
-### version before updating
+where `string` is a filepath to save the aggregated changelog in
 
- `--version-before-updating 0.1.0`
+It is expected that this file will have always have the following structure
 
+```
+# CHANGELOG
 
-### don't update
+## 0.0.0
 
- `--no-update`
+- add changelog-versioner
+```
+
+When running this for the first time, it needs an version in here to calculate the new version off.
+
+### Version before updating
+
+`--version-before-updating 0.1.0`
+
+### Don't update
+
+`--no-update`
+
+## Output
+
+If there are changes, this command will output the new version before exiting.
+
+If there are no changes, this command will output the string `no changes` before exiting.
 
 ## Example
 
@@ -36,28 +56,31 @@ example
 
 ```md
 // ./patterns/modules/Button/CHANGELOG.md
+
 # CHANGELOG
 
 ## vNext
 
-* [major] deprecated `green` which has been replaced by `primary`
+- [major] deprecated `green` which has been replaced by `primary`
 
 ## 10.1.1
 
-* [minor] aliased `green` variant to `primary`
+- [minor] aliased `green` variant to `primary`
 
 ## 10.0.1
 
-* [bug] fixed issue with font on samsung browser
+- [bug] fixed issue with font on samsung browser
 
 // ./patterns/modules/Notifications/CHANGELOG.md
+
 # CHANGELOG
 
 ## vNext
 
-* [minor] introduced `Notifications` module
+- [minor] introduced `Notifications` module
 
 // ./CHANGELOG.md
+
 # CHANGELOG
 
 ## vNext
@@ -66,13 +89,13 @@ example
 
 ### Button
 
-* [minor] aliased `green` variant to `primary`
+- [minor] aliased `green` variant to `primary`
 
 ## 10.0.1
 
 ### Button
 
-* [bug] fixed issue with font on samsung browser
+- [bug] fixed issue with font on samsung browser
 ```
 
 ```bash
@@ -83,32 +106,33 @@ changelog-version-and-aggregation --find-changelogs-in ./patterns --aggregated-o
 
 ```md
 // ./patterns/modules/Notifications/CHANGELOG.md
+
 # CHANGELOG
 
 ## 11.0.0
 
-* [minor] introduced `Notifications` module
-
+- [minor] introduced `Notifications` module
 
 // ./patterns/modules/Button/CHANGELOG.md
+
 # CHANGELOG
 
 ## vNext
 
 ## 11.0.0
 
-* [major] deprecated `green` which has been replaced by `primary`
+- [major] deprecated `green` which has been replaced by `primary`
 
 ## 10.1.1
 
-* [minor] aliased `green` variant to `primary`
+- [minor] aliased `green` variant to `primary`
 
 ## 10.0.1
 
-* [bug] fixed issue with font on samsung browser
-
+- [bug] fixed issue with font on samsung browser
 
 // ./CHANGELOG.md
+
 # CHANGELOG
 
 ## vNext
@@ -117,21 +141,21 @@ changelog-version-and-aggregation --find-changelogs-in ./patterns --aggregated-o
 
 ### Button
 
-* [major] deprecated `green` which has been replaced by `primary`
+- [major] deprecated `green` which has been replaced by `primary`
 
 ### Notifications
 
-* [minor] introduced `Notifications` module
+- [minor] introduced `Notifications` module
 
 ## 10.1.1
 
 ### Button
 
-* [minor] aliased `green` variant to `primary`
+- [minor] aliased `green` variant to `primary`
 
 ## 10.0.1
 
 ### Button
 
-* [bug] fixed issue with font on samsung browser
+- [bug] fixed issue with font on samsung browser
 ```
