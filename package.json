@@ -1,12 +1,16 @@
 {
   "name": "changelog-versioner",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "changelog versioning tool",
   "main": "build/index.js",
   "license": "MIT",
   "bin": {
     "changelog-versioner": "bin/index.js"
   },
+  "files": [
+    "build",
+    "bin"
+  ],
   "scripts": {
     "build": "tsc",
     "update-changelog": "yarn ts-node --files src/index.ts --find-changelogs-in './src/**/CHANGELOG.md' --aggregated-output ./CHANGELOG.md --version-before-updating $npm_package_version",
